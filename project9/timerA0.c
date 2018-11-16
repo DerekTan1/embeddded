@@ -1,4 +1,11 @@
 #include "timerA0.h"
+#include "DAC.h"
+#include "spi.h"
+
+extern DAC gDAC_A;
+extern DAC gDAC_B;
+extern DAC gDAC_C;
+extern DAC gDAC_D;
 
 void ConfigureTimerA0(void)
 {
@@ -24,24 +31,11 @@ void ConfigureTimerA0(void)
 // Interrupt service routine for CCIFG0
 __interrupt void TimerA0ISR(void)
 {
-    static unsigned int resolution = 100;
-    // 100 Hz
-    static unsigned int delayA = 10;
-    TimeDelay(delayA, resolution);
-
-    // 250 Hz
-    static unsigned int delayB = 4;
-    TimeDelay(delayB, resolution);
-
-    // 500 Hz
-    static unsigned int delayC = 2;
-    TimeDelay(delayC, resolution);
+    // 1 kHz
+    SPISendByte(WRITE_TO_AND_UPDATE_N | DAC_D);
+    int data = UpdateDACWithArrayValue(&gDAC_D);
+    SPISendByte((data >> 8) & 0xFF);
+    SPISendByte(data & 0xFF);
 }
 
-void TimeDelay(unsigned int delay, unsigned int resolution) {
-    volatile int i, j;
-    for (i = 0; i < delay; i++) {
-        for (j = 0; j < resolution; j++);
-    }
-}
 

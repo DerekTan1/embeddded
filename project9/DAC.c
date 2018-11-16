@@ -17,7 +17,7 @@ void InitializeDACObject(DAC *Dac, int DACNum, unsigned int * ArrayPtr, int Arra
 int UpdateDACWithArrayValue(DAC *Dac)
 {
 	int ArrayValue = Dac->ArrayValuesPtr[Dac->CurrentArrayIndex];
-	Dac->CurrentArrayIndex +=1;
+	Dac->CurrentArrayIndex += 1;
 	//Modulo Increment, the easy way
 	if(Dac->CurrentArrayIndex > Dac->ArrayLength){
 	    Dac->CurrentArrayIndex = 0;
