@@ -2,8 +2,8 @@
 
 void InitializeDACPins(void)
 {
-    SPISendByte(POWER_DOWN_N);
-    SPISendByte(ALL_DACS);
+    SET_DAC_CS_AS_AN_OUTPUT;
+    SET_DAC_Clear_AS_AN_OUTPUT;
 }
 
 void InitializeDACObject(DAC *Dac, int DACNum, unsigned int * ArrayPtr, int ArrayLength)
@@ -17,7 +17,7 @@ void InitializeDACObject(DAC *Dac, int DACNum, unsigned int * ArrayPtr, int Arra
 int UpdateDACWithArrayValue(DAC *Dac)
 {
 	int ArrayValue = Dac->ArrayValuesPtr[Dac->CurrentArrayIndex];
-	Dac->CurrentArrayIndex += 1;
+	Dac->CurrentArrayIndex +=1;
 	//Modulo Increment, the easy way
 	if(Dac->CurrentArrayIndex > Dac->ArrayLength){
 	    Dac->CurrentArrayIndex = 0;
