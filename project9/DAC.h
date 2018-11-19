@@ -31,8 +31,8 @@ typedef struct {
 #define DAC_CS_PORT              P1OUT
 #define DAC_CS_DDR               P1DIR
 #define SET_DAC_CS_AS_AN_OUTPUT  DAC_CS_DDR |= DAC_CS_BIT
-#define TURN_ON_CS                    DAC_CS_PORT |= DAC_CS_BIT
-#define TURN_OFF_CS                        DAC_CS_PORT &= ~DAC_CS_BIT
+#define TURN_OFF_CS                    DAC_CS_PORT |= DAC_CS_BIT
+#define TURN_ON_CS                        DAC_CS_PORT &= ~DAC_CS_BIT
 
 //  DAC Clear
 #define DAC_CLEAR 1
@@ -40,8 +40,8 @@ typedef struct {
 #define DAC_CLEAR_PORT              P1OUT
 #define DAC_CLEAR_DDR               P1DIR
 #define SET_DAC_CLEAR_AS_AN_OUTPUT  DAC_CLEAR_DDR |= DAC_CLEAR_BIT
-#define TURN_ON_DAC_CLEAR                    DAC_CLEAR_PORT |= DAC_CLEAR_BIT
-#define TURN_OFF_DAC_CLEAR                        DAC_CLEAR_PORT &= ~DAC_CLEAR_BIT
+#define TURN_OFF_DAC_CLEAR                    DAC_CLEAR_PORT |= DAC_CLEAR_BIT
+#define TURN_ON_DAC_CLEAR                        DAC_CLEAR_PORT &= ~DAC_CLEAR_BIT
 
 /*
  * InitializeDACPins

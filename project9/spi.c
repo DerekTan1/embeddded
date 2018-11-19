@@ -7,9 +7,10 @@ void InitializeSPI()
 	// Select USCI B0 SPI functionality.
     UCB0CTL0 |= UCCKPH | UCMSB | UCMST | UCSYNC | UCMODE_0;
 	// SMCLK as source
-    UCB0CTL1 = UCSSEL_2|UCSWRST;
+    UCB0CTL1 |= UCSSEL_2;
 	// Divide clock by 1
     UCB0BR0 = 1;
+    UCB0BR1 = 0;
 	// Initialize transmit buffer to 0
     UCB0TXBUF = 0x0;
 

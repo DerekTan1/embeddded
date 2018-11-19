@@ -4,6 +4,7 @@ void InitializeDACPins(void)
 {
     SET_DAC_CS_AS_AN_OUTPUT;
     SET_DAC_CLEAR_AS_AN_OUTPUT;
+    TURN_OFF_DAC_CLEAR;
 }
 
 void InitializeDACObject(DAC *Dac, int DACNum, unsigned int * ArrayPtr, int ArrayLength)
